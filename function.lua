@@ -3,10 +3,6 @@
 	Holds the function prototype class
 ]]
 
-if (not require) and dofile then
-	require = dofile
-end
-
 local class = require "middleclass"
 local bit = require "bit"
 local byteStruct = require "byteStruct"

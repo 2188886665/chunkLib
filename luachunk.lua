@@ -1,3 +1,7 @@
+if (not require) and dofile then
+	require = dofile
+end
+
 local class = require "middleclass"
 local byteStruct = require "byteStruct"
 local Header = require "header"
