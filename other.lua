@@ -17,7 +17,8 @@ function Constant:initialize(bytes,info)
 	elseif	self.type == 1 then
 		self.value = self:getBytes(1):byte()
 	elseif self.type == 3 then
-		self.value = float.read_double(self:getBytes(8),true)
+		self.byteval = self:getBytes(8)
+		self.value = float.read_double(self.byteval,true)
 	else
 		self.value = self:getFormatedData({nil,2,{nil,1,1}})
 	end

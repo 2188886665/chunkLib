@@ -38,7 +38,8 @@ if has_ffi and has_bit then
 else
 	-- Use the power of loadstring for reading doubles
 	local d = string.dump ( loadstring ( [[return 523123.123145345]] ) )
-	local s , e = d:find ( "\3\54\208\25\126\204\237\31\65" )
+	local endian = d:sub(7,7):byte() == 1
+	local s , e = d:find ( endian and "\3\54\208\25\126\204\237\31\65" or "\0\65\31\237\204\126\25\208\54" )
 	if s == nil then
 		error ( "Unable to set up IEEE-754 double reading" )
 	end

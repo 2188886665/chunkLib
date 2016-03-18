@@ -3,7 +3,6 @@
 	class for the lua header
 ]]
 local class = require "middleclass"
-local bit = require "bit"
 local byteStruct = require "byteStruct"
 
 local Header = class("Header",byteStruct)

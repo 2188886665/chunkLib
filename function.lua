@@ -4,7 +4,6 @@
 ]]
 
 local class = require "middleclass"
-local bit = require "bit"
 local byteStruct = require "byteStruct"
 local Instruction = require "instruction"
 local Constant,Local = unpack(require "other")
