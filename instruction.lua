@@ -5,7 +5,7 @@
 	the args and a simple __tostring for debuging purposes.
 ]]
 local class = require "middleclass"
-local bit = bit or require "bit"
+local bit = bit32 or require "bit"
 bit.lshift = bit.lshift or bit.blshift
 bit.rshift = bit.rshift or bit.rlshift
 local bitBuff = class("bitBuff")
