@@ -1,5 +1,7 @@
 if (not require) and dofile then
-	require = dofile
+	require = function(a)
+		dofile(a..".lua")
+	end
 end
 
 local class = require "middleclass"
