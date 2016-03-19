@@ -27,13 +27,18 @@ local code = [[
 	end
 ]]
 
-function func()
-  print("hi")
+local function decompFunc()
+  local i = 21
+  i = i+42
+  return i
 end
 
-local d = string.dump ( loadstring ( [[return 523123.123145345]] ) )
-local s , e = d:find ( "\3%z%z%z\54\208\25\126\204\237\31\65" )
+local str = string.dump(decompFunc)
 
-for k,v in pairs(Chunk(d).func.constants) do
-	print(v.byteval:byte(1,8))
+local f = io.open("sample.lua","wb")
+f:write(str)
+f:close()
+
+for k,v in pairs(Chunk(str).func.instructions) do
+	print(v.args.a,v.args.b,v.args.c)
 end
