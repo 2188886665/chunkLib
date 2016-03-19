@@ -27,10 +27,10 @@ local code = [[
 	end
 ]]
 
-local function decompFunc()
-  local i = 21
-  i = i+42
-  return i
+local function decompFunc(x)
+  for i = x,x,0 do
+	return i
+  end
 end
 
 local str = string.dump(decompFunc)
@@ -40,5 +40,5 @@ f:write(str)
 f:close()
 
 for k,v in pairs(Chunk(str).func.instructions) do
-	print(v.args.a,v.args.b,v.args.c)
+	print(v)
 end

@@ -5,9 +5,8 @@
 	the args and a simple __tostring for debuging purposes.
 ]]
 local class = require "middleclass"
-local bit = bit32 or require "bit"
-bit.lshift = bit.lshift or bit.blshift
-bit.rshift = bit.rshift or bit.rlshift
+local bit = require "bit"
+
 local bitBuff = class("bitBuff")
 
 --Gets a number of bits starting from index
@@ -39,7 +38,7 @@ function bitBuff.static.asciiToNum(str,e)
 end
 
 function bitBuff.static.sign(int,bits)
-	local half = 2^bits/2
+	local half = 2^bits/2 -1
 	return int - half
 end
 
@@ -104,7 +103,7 @@ function Instruction:getArgs()
 	local args = {}
 	for k,v in pairs(self.format) do
 		if k ~= "id" then
-			args[k] = v[2] and bitBuff.static.sign(self:readBits(v[1]),v[1]) or self:readBits(v[1])
+			args[k] = v[2] and bitBuff.static.sign(self:readBits(v[1],self.info.endian),v[1]) or self:readBits(v[1],self.info.endian)
 		end
 	end
 	return args
